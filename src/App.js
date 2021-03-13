@@ -50,7 +50,7 @@ const App = () => {
 
   return (
     <div className='container'>
-      <Header onAdd={addTaskClick} />
+      <Header onAdd={addTaskClick} showAdd={showAddTask} />
       {showAddTask && <AddTask onAddClick={saveTaskClick} />}
       {tasks.length > 0 ? (
         <Tasks
