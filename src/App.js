@@ -12,7 +12,7 @@ const App = () => {
     },
     {
       id: 2,
-      text: 'DMeeting at school',
+      text: 'Meeting at school',
       day: 'Feb 6th at 1:30pm',
       reminder: true,
     },
@@ -24,10 +24,18 @@ const App = () => {
     },
   ]);
 
+  function deleteTaskClick(id) {
+    setTasks(tasks.filter((task) => task.id !== id));
+  }
+
   return (
     <div className='container'>
       <Header />
-      <Tasks tasks={tasks} />
+      {tasks.length > 0 ? (
+        <Tasks tasks={tasks} onDelete={deleteTaskClick} />
+      ) : (
+        'No Tasks To Show'
+      )}
     </div>
   );
 };
