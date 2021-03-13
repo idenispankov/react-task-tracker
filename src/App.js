@@ -4,6 +4,7 @@ import Tasks from './components/Tasks';
 import AddTask from './components/AddTask';
 
 const App = () => {
+  const [showAddTask, setShowAddTask] = useState(false);
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -25,7 +26,11 @@ const App = () => {
     },
   ]);
 
-  function addTaskClick(task) {
+  function addTaskClick() {
+    setShowAddTask(!showAddTask);
+  }
+
+  function saveTaskClick(task) {
     const id = Math.floor(Math.random() * 10000) + 1;
     const newTask = { id, ...task };
     setTasks([...tasks, newTask]);
@@ -45,8 +50,8 @@ const App = () => {
 
   return (
     <div className='container'>
-      <Header />
-      <AddTask onAddClick={addTaskClick} />
+      <Header onAdd={addTaskClick} />
+      {showAddTask && <AddTask onAddClick={saveTaskClick} />}
       {tasks.length > 0 ? (
         <Tasks
           tasks={tasks}
