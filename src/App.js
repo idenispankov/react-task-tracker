@@ -94,7 +94,7 @@ const App = () => {
         <Route
           path='/'
           exact
-          render={(props) => (
+          render={() => (
             <>
               {showAddTask && <AddTask onAddClick={saveTaskClick} />}
               {tasks.length > 0 ? (
